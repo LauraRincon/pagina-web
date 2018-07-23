@@ -1,0 +1,47 @@
+{% extends "base.html" %}
+
+
+{% block content %}
+
+  <div id="contenedor" class="container">
+  <header>
+  <br/><br/>
+  </header>
+
+
+  <center>
+    <form>
+      <div class="form-group">
+        Desde: <input type="date" name="fechaInicio" step="1" min="2013-01-01" max="2018-02-01" value="2018-02-01">
+        Hasta: <input type="date" name="fechaFinal" step="1" min="2013-01-01" max="2018-02-28" value="2018-02-28">
+  </div>
+    </form>
+  </center>
+
+
+  <table class="table table-bordered" width="100%">
+    <thead>
+      <tr>
+        <th scope="col">Fecha</th>
+        <th scope="col">Hs</th>
+        <th scope="col">TM02</th>
+        <th scope="col">Tp</th>
+        <th scope="col">Tz</th>
+        <th scope="col">Hm0</th>
+        <th scope="col">Hmax</th>
+        <th scope="col">H1/10</th>
+      </tr>
+    </thead>
+  </table>
+
+  <caption>
+    <center>
+      <a href='http://127.0.0.1:8000/Boya/register' class="btn btn-primary btn-lg active" role="button" arias-pressed ="true"> Consultar </a>
+    </center>
+  </caption>
+
+  </section>
+    <footer></footer>
+  </div>
+
+{% endblock %}

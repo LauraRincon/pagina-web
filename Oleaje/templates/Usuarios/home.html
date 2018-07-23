@@ -1,0 +1,55 @@
+{% extends "base.html" %}
+
+{% block content %}
+  <div class="container " style="width:2000px;height:500px;">
+
+      <div class="card box-shadow" style="width:800px;height:700px;">
+        <div class="card-header">
+          <h4 class="my-0 font-weight-normal">Información Personal</h4>
+        </div>
+
+        <div class="card-body">
+          <div class="form-group alingn-items-center">
+          <form method="post" action="{% url 'Usuarios_home'%}">
+
+          {{ form.as_p }}
+
+          {% csrf_token %}
+
+
+
+        <hr/>
+
+          <caption>
+            <strong>El solicitante de los datos manifiesta los siguientes compromisos:</strong>
+              <ul>
+                  <li>Todos los datos de propiedad en los datos pertenecen y
+                    pertenecerán a IMARES y el solicitante reconoce que no tiene
+                    los derechos de propiedad de ningún tipo.</li>
+                  <li>Los datos solicitados se destinarán a la finalidad de la
+                    actividad cientΰifica descrita y, en ningún caso, se
+                    utilizarán en trabajos remunerados contratados por terceros.</li>
+                  <li>Los datos solicitados no se distribuirán, comerzalizarán,
+                  alquilarán, venderán, explotarán comeracialmentee, pretarán
+                  o regalarán.</li>
+                  <li>Se hará referencia a la fuente (La Unidad de Ingeniería
+                    Marítima de Ríos y Estuarios) en aquellas publicaciones,
+                    informes o ponencias derivadas del uso de los datos</li>
+
+              </ul>
+          </caption>
+          <br/>
+            <label>
+              <input type="checkbox" required> Aceptar lo términos
+            </label>
+            <br/>
+            <div class="btn-group">
+             <button type="submit" class="btn btn-primary">Registrar</button>
+            </div>
+            </form>
+        </div>
+    </div>
+  </div>
+</div>
+
+{% endblock %}
