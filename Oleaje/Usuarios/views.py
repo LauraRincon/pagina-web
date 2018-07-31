@@ -3,7 +3,7 @@ from django.shortcuts import render, redirect
 from .forms import CustomUserCreationForm
 from .models import User
 
-def home(request):
+def signup(request):
  if request.method == "POST":
      form = CustomUserCreationForm(request.POST)
      print(form)

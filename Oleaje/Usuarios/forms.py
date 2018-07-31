@@ -11,6 +11,7 @@ class CustomUserCreationForm(UserCreationForm):
         fields = ('username', 'name', 'last_name', 'profession', 'institution', 'address',
                    'email', 'phone', 'purpose')
         labels = { 'name': 'Nombre', 'last_name':'Apellido', 'profession':'Profesión', 'institution':'Institución', 'address':'Dirección', 'phone':'Teléfono', 'purpose':'Propósito'}
+        widgets = {'purpose': forms.Textarea(attrs={'rows':4, 'cols':15})}
 
 class CustomChangeForm(UserChangeForm):
     class Meta:
