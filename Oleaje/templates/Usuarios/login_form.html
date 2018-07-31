@@ -1,20 +1,25 @@
 {% extends "base.html" %}
+{% load crispy_forms_tags %}
+
 
 {% block title%}
   Login
 {% endblock %}
 
 {% block content %}
-  <form role="form"
-    action="{% url 'Usuarios_login' %}"
-    method="post">
-    {% csrf_token %}
-    <br/>
-    <h5>Iniciar sesión </h5>
+  <div class="container" style="width:500px;">
+    <form role="form"
+      action="{% url 'Usuarios_login' %}"
+      method="post">
+      <br/>
+      <h5>Iniciar sesión </h5>
+      <div class="form-group alingn-items-center">
+      {% csrf_token %}
+      {{ form|crispy }}
 
-    {{ form.as_p }}
+      <button type="submit" class="btn btn-primary">Iniciar sesión</button>
+      </div>
+    </form>
+  </div>
 
-    <button type="submit" class="btn btn-sucess">Iniciar sesión</button>
-
-  </form>
 {% endblock %}

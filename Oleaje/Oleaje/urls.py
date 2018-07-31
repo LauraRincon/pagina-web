@@ -16,12 +16,12 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 from django.conf.urls import url, include
+from django.conf.urls import handler404
 
 from .views import welcome
 
 urlpatterns = [
     path(r'admin/', admin.site.urls),
-    path('Usuarios/', include('django.contrib.auth.urls')),
     url(r'^Usuarios/', include('Usuarios.urls')),
     url(r'^Boya/', include('Boya.urls')),
     url(r'^$', welcome, name="Oleaje_welcome")

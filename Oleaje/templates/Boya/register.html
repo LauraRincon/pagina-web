@@ -1,5 +1,5 @@
 {% extends "base.html" %}
-
+{% load staticfiles %}
 
 {% block content %}
 
@@ -10,19 +10,25 @@
 
 
   <center>
-    <form>
+    <form method="post" action="{% url 'Boya_register'%}">
       <div class="form-group">
-        Desde: <input type="date" name="fechaInicio" step="1" min="2013-01-01" max="2018-02-01" value="2018-02-01">
-        Hasta: <input type="date" name="fechaFinal" step="1" min="2013-01-01" max="2018-02-28" value="2018-02-28">
-  </div>
+        {{ form.as_table }}
+        {% csrf_token %}
+      </div>
+      <div class="btn-group">
+        <button type="submit" class="btn btn-primary">Consultar</button>
+      </div>
+
     </form>
   </center>
 
+<br/>
 
   <table class="table table-bordered" width="100%">
     <thead>
       <tr>
         <th scope="col">Fecha</th>
+        <th scope="col">Hora</th>
         <th scope="col">Hs</th>
         <th scope="col">TM02</th>
         <th scope="col">Tp</th>
@@ -32,16 +38,45 @@
         <th scope="col">H1/10</th>
       </tr>
     </thead>
+    <tbody>
+      {% for m in mesuares %}
+        <tr>
+          <td>{{ m.date }}</td>
+          <td>{{ m.hour }}</td>
+          <td>{{ m.Hs }}</td>
+          <td>{{ m.Tm02 }}</td>
+          <td>{{ m.Tp }}</td>
+          <td>{{ m.Tz }}</td>
+          <td>{{ m.Hm0 }}</td>
+          <td>{{ m.Hmax }}</td>
+          <td>{{ m.H1_10 }}</td>
+        </tr>
+      {% endfor %}
+    </tbody>
   </table>
 
-  <caption>
-    <center>
-      <a href='http://127.0.0.1:8000/Boya/register' class="btn btn-primary btn-lg active" role="button" arias-pressed ="true"> Consultar </a>
-    </center>
-  </caption>
 
   </section>
-    <footer></footer>
+    {% if messages %}
+      <div class="alert alert-warning" role="alert">
+        {% for message in messages %}
+            {{ message }}
+        {% endfor %}
+      </div>
+    {% endif %}
   </div>
 
+{% endblock %}
+
+{% block scripts %}
+  <link type="text/css" href="{% static '/js/jquery-ui-1.12.1.custom/jquery-ui.css' %}" rel="Stylesheet" />
+  <script type="text/javascript" src="{% static '/js/jquery-ui-1.12.1.custom/jquery-ui.min.js' %}"></script>
+
+  <script>
+  $( function() {
+
+    $( "#id_start_date" ).datepicker({dateFormat: "yy-mm-dd"});
+    $( "#id_final_date" ).datepicker({dateFormat: "yy-mm-dd"});
+  } );
+  </script>
 {% endblock %}

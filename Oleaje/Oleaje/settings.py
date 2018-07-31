@@ -37,8 +37,10 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'crispy_forms',
     'Boya',
-    'Usuarios'
+    'Usuarios',
+    'import_export',
 ]
 
 MIDDLEWARE = [
@@ -105,7 +107,7 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/2.0/topics/i18n/
 
-LANGUAGE_CODE = 'en-us'
+LANGUAGE_CODE = 'es-es'
 
 TIME_ZONE = 'UTC'
 
@@ -127,6 +129,11 @@ STATICFILES_DIRS = [
 
 AUTH_USER_MODEL = 'Usuarios.CustomUser'
 
+CRISPY_TEMPLATE_PACK = 'bootstrap4'
 
+
+LOGIN_URL = "Usuarios_login"
 LOGIN_REDIRECT_URL = "Boya_register"
 LOGOUT_REDIRECT_URL = "Oleaje_welcome"
+
+IMPORT_EXPORT_USE_TRANSACTIONS = True
