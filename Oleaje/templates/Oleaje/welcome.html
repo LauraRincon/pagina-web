@@ -1,5 +1,6 @@
 {% extends "base.html" %}
 {% load staticfiles %}
+{% load easy_maps_tags %}
 
 {% block title %}
   Bienvenido
@@ -7,16 +8,23 @@
 
 {% block content %}
 <br/>
-  <div class="card w-50" >
-    <img class="card-img-top" src="{% static '/media/boya.jpg' %}" alt="Medición de Oleaje" height="350">
-     <div class="card-body">
-       <h5 class="card-title">Medición de Oleaje en Caldera</h5>
-       <p class="card-text">Descripción general e informativa</p>
-       {% if user.is_authenticated %}
-       <p class="card-text">  <a href="/Boya/register">  Consultar datos recolectados </a></p>
-       {% endif %}
-     </div>
+<div class="card-deck">
+    <div class="card" >
+      <img class="card-img-top" src="{% static '/media/boya.jpg' %}" alt="Medición de Oleaje" height="350">
+       <div class="card-body">
+         <h5 class="card-title">Medición de Oleaje</h5>
+         <p class="card-text">Descripción general e informativa</p>
+         {% if user.is_authenticated %}
+         <p class="card-text">  <a href="/Boya/register">  Consultar datos recolectados </a></p>
+         {% endif %}
+       </div>
 
-  </div>
-
+    </div>
+    <div class="card" >
+       <div class="card-body">
+         {% easy_map "Costa Rica, Puntarenas, Caldera"  500 350 8 %}
+         <h5 class="card-title">Ubicación de la Boya</h5>
+       </div>
+    </div>
+</div>
 {% endblock %}

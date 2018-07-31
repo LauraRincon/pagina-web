@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/2.0/ref/settings/
 """
 
 import os
+import django
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -37,6 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'easy_maps',
     'crispy_forms',
     'Boya',
     'Usuarios',
@@ -137,3 +139,11 @@ LOGIN_REDIRECT_URL = "Boya_register"
 LOGOUT_REDIRECT_URL = "Oleaje_welcome"
 
 IMPORT_EXPORT_USE_TRANSACTIONS = True
+
+if django.VERSION < (1, 7):
+    INSTALLED_APPS += (
+        'south',
+    )
+
+EASY_MAPS_GOOGLE_MAPS_API_KEY = 'AIzaSyDKxYRPStn4avJOkAKLI6yt62-XwWExti0'
+EASY_MAPS_CENTER = (9.92, -84.08)
