@@ -6,7 +6,6 @@ from .models import User
 def signup(request):
  if request.method == "POST":
      form = CustomUserCreationForm(request.POST)
-     print(form)
      if form.is_valid:
          form.save()
          return redirect('Usuarios_login')
